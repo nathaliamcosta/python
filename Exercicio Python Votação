@@ -1,76 +1,30 @@
-segunda = int(input("Segunda-feira: "))
-terca = int(input("Terça-feira "))
-quarta = int(input("Quarta-feira: "))
-quinta = int(input("Quinta-feira: "))
-sexta = int(input("Sexta-feira: "))
+DAYS = ['Segunda-feira', 'Terca-feira', 'Quarta-feira', 'Quita-feira', 'Sexta-feira']
 
-if segunda > terca:
-    print("O dia mais votado foi segunda-feira")
+dayWithHighestVotes = dict(label='', votes=0)
+duplicated = []
+for day in DAYS:
+    aux = int(input(day + ": "))
+    vote = dict(label=day, votes=aux)
+    
+    # Verifica se o que foi colocar e o dia com mais votos
+    # Se for eu preciso limpar meu array de duplicados, pois
+    # vou utilizar isso depois para validar se tem mais de um dia com
+    # votos iguais
 
-elif terca > segunda:
-    print("O dia mais votado foi terça-feira")
+    if aux > dayWithHighestVotes["votes"]:
+        dayWithHighestVotes = vote
+        duplicated = [vote]
+    
+    # Se quantidade votos e igual ao dia mais votado
+    # adiciona ao array de duplicados
+    elif aux == dayWithHighestVotes["votes"]:
+        duplicated.append(vote)
 
-elif segunda > quarta:
-    print("O dia mais votado foi segunda-feira")
+# Como temos o array de duplicados
+# podemos printar quais sao os dias com votacao empatada 
 
-elif quarta < segunda:
-    print("O dia mais votado foi quarta-feira")
-
-elif segunda > quinta:
-    print("O dia mais votado foi segunda-feira")
-
-elif quinta < segunda:
-    print("O dia mais votado foi quintafeira")
-
-elif segunda > sexta:
-    print("O dia mais votado foi segunda-feira")
-
-elif sexta > segunda:
-    print("O dia mais votado foi sexta-feira")
-
-elif terca > quarta:
-    print("O dia mais votado foi terça-feira")
-
-elif quarta > terca:
-    print("O dia mais votado foi quarta-feira")
-
-
-elif terca > quinta:
-    print("O dia mais votado foi terça-feira")
-
-elif quinta > terca:
-    print("O dia mais votado foi quinta-feira")
-
-
-elif terca > sexta:
-    print("O dia mais votado foi terça-feira")
-
-
-elif sexta > terca:
-    print("O dia mais votado foi sexta-feira")
-
-
-elif quarta > quinta:
-    print("O dia mais votado foi quarta-feira")
-
-elif quinta > quarta:
-    print("O dia mais votado foi quinta-feira")
-
-
-elif quarta > sexta:
-    print("O dia mais votado foi quarta-feira")
-
-elif sexta > quarta:
-    print("O dia mais votado foi sexta-feira")
-
-
-elif quinta > sexta:
-    print("O dia mais votado foi quinta-feira")
-
-elif sexta > quinta:
-    print("O dia mais votado foi sexta-feira")
-
+if len(duplicated) > 1:
+    print "Tivemos mais de uma dia mais votado, por favor, preencha novamente (: "
+    print duplicated
 else:
-    print("Tivemos mais de uma dia mais votado, por favor, preencha novamente (: ")
-
-print("fim")
+    print "O dia com mais votos foi: " + dayWithHighestVotes["label"]
