@@ -6,7 +6,7 @@ for day in DAYS:
     aux = int(input(day + ": "))
     vote = dict(label=day, votes=aux)
     
-    # Verifica se o que foi colocar e o dia com mais votos
+    # Verifica se o que foi colocado e o dia com mais votos
     # Se for eu preciso limpar meu array de duplicados, pois
     # vou utilizar isso depois para validar se tem mais de um dia com
     # votos iguais
